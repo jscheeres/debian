@@ -15,3 +15,6 @@ apt update && apt install gh -y
 gh auth login
 
 gh ssh-key add ~/.ssh/github.pub --title "Debian CLI Key"
+
+
+apt install -y sudo curl wget git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber
