@@ -1,6 +1,7 @@
 apt update && apt upgrade -y
 apt install -y git gpg
 
+rm -f ~/.ssh/github*
 ssh-keygen -t ed25519 -C "jscheeres@gmail.com" -f ~/.ssh/github -N ""
 cat ~/.ssh/github.pub
 
