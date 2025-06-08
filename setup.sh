@@ -31,16 +31,15 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages
 
 # Update system
 
-echo "1. Updating system..."
 apt update && apt upgrade -y
 
 # Install essential packages
 
-echo "2. Installing essential packages..."
 apt install -y sudo curl wget git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber slack-desktop google-chrome-stable code
 
-echo "3. Creating directories..."
-mkdir -p ~/.config/sway ~/.config/waybar ~/.config/wofi ~/downloads
+# Copy sway, waybar, and wofi configuration
+
+mkdir -p ~/.config/sway ~/.config/waybar ~/.config/wofi
 
 echo "5. Setting up Sway configuration..."
 if [ -d ".config" ]; then
@@ -52,6 +51,5 @@ else
     echo "No .config directory found in script location."
 fi
 
-echo "6. Downloading wallpaper..."
 wget -O /home/$USERNAME/.config/sway/wallpaper.jpg https://www.learnlinux.tv/wp-content/uploads/2023/11/wallpaper.jpg
 chown $USERNAME:$USERNAME /home/$USERNAME/.config/sway/wallpaper.jpg
