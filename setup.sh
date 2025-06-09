@@ -53,14 +53,14 @@ usermod -aG sudo "$USERNAME"
 # Clone repository from github
 
 rm -rf /root/.gitconfig
-git clone https://github.com/jscheeres/debian.git ~
+git clone https://github.com/jscheeres/debian.git /root/debian
 
 # Copy sway, waybar, and wofi configuration
 
 mkdir -p /home/$USERNAME/.config/sway /home/$USERNAME/.config/waybar /home/$USERNAME/.config/wofi
 
-if [ -d "~/.config" ]; then
-    cp -rT ~/.config "/home/$USERNAME/.config"
+if [ -d "/root/debian/.config" ]; then
+    cp -rT /root/debian/.config "/home/$USERNAME/.config"
     find "/home/$USERNAME/.config" -type f -name "*.sh" -exec chmod +x {} \;
     chown -R "$USERNAME:$USERNAME" "/home/$USERNAME/.config"
     echo "Copied .config to /home/$USERNAME/.config"
