@@ -19,6 +19,14 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+# Update system
+
+apt update && apt upgrade -y
+
+# Install essential packages
+
+apt install -y sudo curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber gh
+
 # Add package sources and keys
 
 wget -O- https://packagecloud.io/slacktechnologies/slack/gpgkey | gpg --dearmor > /usr/share/keyrings/slack.gpg
@@ -33,14 +41,9 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages
 wget -O- https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor > /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main' > /etc/apt/sources.list.d/github-cli.list
 
-# Update system
+# Install additional applications
 
-apt update && apt upgrade -y
-
-# Install essential packages
-
-apt install -y sudo curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber gh
-#slack-desktop google-chrome-stable code
+#apt install -y slack-desktop google-chrome-stable code
 
 # Add the user
 
