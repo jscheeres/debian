@@ -44,15 +44,12 @@ apt install -y sudo curl wget gpg git htop unzip ca-certificates light sway sway
 
 # Add the user
 
-echo "4. Adding user $USERNAME..."
 adduser --disabled-password --gecos "" "$USERNAME"
-echo "User $USERNAME created."
-echo "$USERNAME:$PASSWORD" | chpasswd
-echo "Password for $USERNAME set."
-usermod -aG sudo "$USERNAME"
+#echo "$USERNAME:$PASSWORD" | chpasswd
+#usermod -aG sudo "$USERNAME"
 
 # Switch to the new user
-su - "$USERNAME"
+su - "$USERNAME" 
 
 # Generate SSH keys for the user
 rm -f ~/.ssh/github*
