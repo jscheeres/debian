@@ -43,7 +43,7 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gp
 
 # Install additional applications
 
-#apt install -y slack-desktop google-chrome-stable code
+apt install -y slack-desktop google-chrome-stable code
 
 # Add the user
 
