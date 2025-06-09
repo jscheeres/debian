@@ -48,27 +48,19 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gp
 # Add the user
 
 sudo adduser --disabled-password --gecos "" "$USERNAME"
-#echo "$USERNAME:$PASSWORD" | chpasswd
-#usermod -aG sudo "$USERNAME"
-
-# Switch to the new user
-#su - "$USERNAME" 
-
-# Generate SSH keys for the user
-rm -f ~/.ssh/github*
-ssh-keygen -t ed25519 -f ~/.ssh/github -N ""
+usermod -aG sudo "$USERNAME"
 
 # Clone repository from github
 
 rm -rf /root/.gitconfig
-git clone https://github.com/jscheeres/debian.git
+git clone https://github.com/jscheeres/debian.git ~
 
 # Copy sway, waybar, and wofi configuration
 
 mkdir -p /home/$USERNAME/.config/sway /home/$USERNAME/.config/waybar /home/$USERNAME/.config/wofi
 
-if [ -d ".config" ]; then
-    cp -rT .config "/home/$USERNAME/.config"
+if [ -d "~/.config" ]; then
+    cp -rT ~/.config "/home/$USERNAME/.config"
     find "/home/$USERNAME/.config" -type f -name "*.sh" -exec chmod +x {} \;
     chown -R "$USERNAME:$USERNAME" "/home/$USERNAME/.config"
     echo "Copied .config to /home/$USERNAME/.config"
