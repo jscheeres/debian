@@ -25,7 +25,7 @@ apt update && apt upgrade -y
 
 # Install essential packages
 
-apt install -y sudo curl wget gpg gh git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber
+apt install -y sudo adduser curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber
 
 # Add package sources and keys
 
@@ -47,12 +47,12 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gp
 
 # Add the user
 
-adduser --disabled-password --gecos "" "$USERNAME"
+sudo adduser --disabled-password --gecos "" "$USERNAME"
 #echo "$USERNAME:$PASSWORD" | chpasswd
 #usermod -aG sudo "$USERNAME"
 
 # Switch to the new user
-su - "$USERNAME" 
+#su - "$USERNAME" 
 
 # Generate SSH keys for the user
 rm -f ~/.ssh/github*
@@ -60,16 +60,13 @@ ssh-keygen -t ed25519 -f ~/.ssh/github -N ""
 
 # Clone repository from github
 
-gh auth login
-gh auth refresh -h github.com -s admin:public_key
-gh ssh-key add ~/.ssh/github.pub --title "Debian CLI Key"
-git clone git@github.com:jscheeres/debian.git ~/debian
+rm -rf /root/.gitconfig
+git clone https://github.com/jscheeres/debian.git
 
 # Copy sway, waybar, and wofi configuration
 
-mkdir -p ~/.config/sway ~/.config/waybar ~/.config/wofi
+mkdir -p /home/$USERNAME/.config/sway /home/$USERNAME/.config/waybar /home/$USERNAME/.config/wofi
 
-echo "5. Setting up Sway configuration..."
 if [ -d ".config" ]; then
     cp -rT .config "/home/$USERNAME/.config"
     find "/home/$USERNAME/.config" -type f -name "*.sh" -exec chmod +x {} \;
