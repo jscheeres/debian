@@ -25,7 +25,8 @@ apt update && apt upgrade -y
 
 # Install essential packages
 
-apt install -y sudo curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber gh
+apt install -y sudo curl wget gpg 
+#git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber gh
 
 # Add package sources and keys
 
@@ -61,6 +62,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/github -N ""
 # Clone repository from github
 
 gh auth login
+gh auth refresh -h github.com -s admin:public_key
 gh ssh-key add ~/.ssh/github.pub --title "Debian CLI Key"
 git clone git@github.com:jscheeres/debian.git ~/debian
 
