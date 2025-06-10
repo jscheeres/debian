@@ -25,7 +25,7 @@ apt update && apt upgrade -y
 
 # Install essential packages
 
-apt install -y sudo adduser curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber
+apt install -y sudo adduser curl wget gpg git htop unzip ca-certificates light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome wireplumber grim slurp
 
 # Add package sources and keys
 

@@ -10,7 +10,6 @@
 # pressing Super + Shift + C.                                                      #
 #==================================================================================#
 
-
 #========================#
 # Appearance and Theming #
 #========================#
@@ -37,8 +36,9 @@ gaps outer 3
 default_border pixel 2
 
 # Set the Wallpaper:
-output * bg $HOME/.config/sway/wallpaper.jpg fill
+output * bg $HOME/.config/sway/wallpapers/2025-BMW-M3-CS-Touring-001-1440w.jpg fill
 
+for_window [app_id="foot"] opacity 0.85
 
 #====================================#
 # Activate the panel                 #
@@ -47,7 +47,6 @@ output * bg $HOME/.config/sway/wallpaper.jpg fill
 bar {
     swaybar_command waybar
 }
-
 
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
@@ -76,6 +75,9 @@ exec swayidle -w \
 set $lock_screen exec bash ~/.config/sway/scripts/lock_screen.sh
 bindsym $mod+Escape exec $lock_screen
 
+# Screenshot
+bindsym Print exec grim ~/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
+bindsym Shift+Print exec ~/.config/sway/scripts/screenshot.sh
 
 #========================================#
 # Keyboard Shortcuts (Window Management) #
