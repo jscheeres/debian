@@ -113,10 +113,3 @@ window#waybar {
     padding: 2px 8px;
     opacity: 0.7;
 }
-
-#custom-shutdown {
-    background: transparent;
-    color: #ffffff;
-    padding: 2px 8px;
-    opacity: 0.7;
-}

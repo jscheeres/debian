@@ -25,8 +25,8 @@
 
     // Choose the order of the modules
     "modules-center": ["sway/workspaces", "tray"],
-    "modules-left": ["custom/hostname"],
-    "modules-right": [ "custom/audio","network","battery","clock"],
+    "modules-left": [],
+    "modules-right": [ "custom/audio","network","battery","clock", "custom/shutdown"],
 
     // Configuration for individual modules
      "sway/workspaces": {
@@ -63,7 +63,7 @@
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {signalStrength}%",
+        "format-wifi": "   {signalStrength}%",
         "format-ethernet": "Connected  ",
         "tooltip-format": "{ifname}: {gwaddr}",
         "format-linked": "{ifname} (No IP)",
@@ -85,5 +85,12 @@
         "exec": "/usr/bin/hostname -f",
         "interval": "once",
         "on-click": "/usr/bin/rxvt -e /usr/bin/htop",
+    },
+
+     "custom/shutdown": {
+        "format": "⏻",
+        "tooltip": "Shutdown",
+        "on-click": "systemctl poweroff",
+        "interval": "once"
     },
 }
