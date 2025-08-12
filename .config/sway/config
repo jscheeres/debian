@@ -10,6 +10,7 @@
 # pressing Super + Shift + C.                                                      #
 #==================================================================================#
 
+
 #========================#
 # Appearance and Theming #
 #========================#
@@ -47,6 +48,7 @@ for_window [app_id="foot"] opacity 0.85
 bar {
     swaybar_command waybar
 }
+
 
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
@@ -135,16 +137,21 @@ bindsym $mod+r mode "resize"
 #=================================#
 # Keyboard Shortcuts (Workspaces) #
 #=================================#
+
+# Move to previous/next workspace
+bindsym Ctrl+$mod+Left workspace prev
+bindsym Ctrl+$mod+Right workspace next
+
 # Switch to workspace
-set $ws1 "1 - Communication"
-set $ws2 "2 - Browsing"
-set $ws3 "3 - System Administration"
-set $ws4 "4 - Learn Linux TV"
-set $ws5 "5 - Media"
-set $ws6 "6 - Writing"
-set $ws7 "7 - Homelab"
-set $ws8 "8 - Home Assistant"
-set $ws9 "9 - Unwind"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
 
 # Move between workspaces
 bindsym $mod+1 workspace $ws1
